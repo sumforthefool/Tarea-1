@@ -1,19 +1,29 @@
 package com.mycompany.calculadoratarea1;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.io.IOException;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 
 /**
  * JavaFX App
  */
-public class App extends Application {
-
-    private static Scene scene;
+public class App  {
+    
+     private JFrame frame;
+    private JPanel panel;
+    private JTextField inputField;
+    private JButton addButton;
+    private JButton subtractButton;
+    private JButton multiplyButton;
+    private JButton divideButton;
+    private JButton equalsButton;
+    private JButton clearButton;
+    private Calculator calculator;
 
     @Override
     public void start(Stage stage) throws IOException {
