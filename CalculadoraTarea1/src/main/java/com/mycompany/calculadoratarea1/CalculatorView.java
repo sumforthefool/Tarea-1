@@ -19,5 +19,9 @@ public class CalculatorView {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Calculator"); // Título de la ventana
         
+        // Crear el campo de texto
+        display = new TextField();
+        display.setEditable(false); // Hacer que el campo de texto no sea editable
+        display.setPrefHeight(50); // Establecer la altura del campo de texto
     }
 }
