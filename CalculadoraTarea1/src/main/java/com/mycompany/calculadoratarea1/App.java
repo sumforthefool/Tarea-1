@@ -25,24 +25,36 @@ public class App  {
     private JButton clearButton;
     private Calculator calculator;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
-    }
+     public App() {
+        // Configuración de la ventana principal y los componentes
+        frame = new JFrame("Calculator");
+        panel = new JPanel();
+        inputField = new JTextField(10);
+        inputField.setEditable(false); // Para evitar la edición directa del campo de entrada
+        addButton = new JButton("+");
+        subtractButton = new JButton("-");
+        multiplyButton = new JButton("*");
+        divideButton = new JButton("/");
+        equalsButton = new JButton("=");
+        clearButton = new JButton("C");
+        calculator = new Calculator(); // Inicialización de la instancia de Calculator
+        
+         panel.setLayout(new GridLayout(4, 4)); // Diseño de cuadrícula para los botones
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+        // Agregar los componentes al panel
+        panel.add(inputField);
+        panel.add(addButton);
+        panel.add(subtractButton);
+        panel.add(multiplyButton);
+        panel.add(divideButton);
+        panel.add(equalsButton);
+        panel.add(clearButton);
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+
+     }
 
     public static void main(String[] args) {
-        launch();
+        new App();
     }
 
 }
