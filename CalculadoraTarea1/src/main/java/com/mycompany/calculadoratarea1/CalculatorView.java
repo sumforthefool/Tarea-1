@@ -53,5 +53,31 @@ public class CalculatorView {
             // Agregar el botón al layout en la posición correspondiente
             gridPane.add(button, i % 4, i / 4);
         }
+
+        // Crear la escena y agregar el layout
+        Scene scene = new Scene(new GridPane(), 220, 220); // Crear una nueva escena
+        ((GridPane) scene.getRoot()).add(display, 0, 0, 4, 1); // Agregar el campo de texto a la escena
+        ((GridPane) scene.getRoot()).add(gridPane, 0, 1, 4, 1); // Agregar el layout con los botones a la escena
+
+        primaryStage.setScene(scene); // Establecer la escena en la ventana principal
+        primaryStage.show(); // Mostrar la ventana
     }
+
+    // Método para manejar los clics en los botones
+    private void handleButtonClick(String input) {
+        switch (input) {
+            case "=":
+                evaluate(); // Evaluar la expresión y mostrar el resultado
+                break;
+            case "C":
+                clear(); // Borrar la entrada actual
+                break;
+            default:
+                currentInput += input; // Agregar la entrada al string actual
+                display.setText(currentInput); // Mostrar la entrada en el campo de texto
+                break;
+        }
+    }
+
 }
+
