@@ -29,7 +29,7 @@ public class Calculator {
     // En caso de división por cero, se lanza una excepción IllegalArgumentException
     public int divide(int a, int b) {
         if (b == 0) {
-            throw new IllegalArgumentException("Cannot divide by zero");
+            throw new IllegalArgumentException("Divide 0");
         }
         return a / b;
     }

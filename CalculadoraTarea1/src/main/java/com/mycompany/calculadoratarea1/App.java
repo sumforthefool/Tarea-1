@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class App {
+
     private JFrame frame;
     private JPanel panel;
     private JTextField inputField;
@@ -19,7 +20,7 @@ public class App {
         inputField = new JTextField(10);
         inputField.setEditable(false); // Para evitar la edición directa del campo de entrada
         calculator = new Calculator(); // Inicialización de la instancia de Calculator
-        
+
         // Crear botones numéricos
         numberButtons = new JButton[10]; // Crear un array de 10 botones numéricos
         for (int i = 0; i < numberButtons.length; i++) {
@@ -27,7 +28,7 @@ public class App {
             numberButtons[i] = new JButton(String.valueOf(i)); // Crear el botón con el dígito correspondiente
             numberButtons[i].addActionListener(e -> inputField.setText(inputField.getText() + digit)); // Agregar ActionListener para agregar el dígito al campo de entrada
         }
-        
+
         // Crear botones de operadores
         operatorButtons = new JButton[]{
             new JButton("+"),
@@ -37,27 +38,27 @@ public class App {
             new JButton("="),
             new JButton("C")
         };
-        
+
         // Configurar el diseño del panel
         panel.setLayout(new GridLayout(4, 4)); // Diseño de cuadrícula para los botones
-        
+
         // Agregar los botones numéricos al panel
         for (int i = 1; i < numberButtons.length; i++) {
             panel.add(numberButtons[i]);
         }
-        
+
         // Agregar el botón "0" en la última fila y primera columna
         panel.add(numberButtons[0]);
-        
+
         // Agregar los botones de operadores al panel
         for (JButton button : operatorButtons) {
             panel.add(button);
             button.addActionListener(new ButtonClickListener());
         }
-        
+
         // Agregar el campo de entrada al panel
         panel.add(inputField);
-        
+
         // Configuración de la ventana principal
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
@@ -67,6 +68,7 @@ public class App {
 
     // Clase interna para manejar los eventos de los botones de operadores
     private class ButtonClickListener implements ActionListener {
+
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             // Manejar la lógica de cada botón
@@ -88,8 +90,24 @@ public class App {
 
         // Método para evaluar la expresión ingresada y devolver el resultado
         private double evaluateExpression(String expression) {
-            // La implementación de eval() debe ser adaptada
-            return 0;
+// Dividir la expresión en operandos y operadores
+            String[] elements = expression.split(" ");
+            // Convertir los operandos de String a int
+            int operand1 = Integer.parseInt(elements[0]);
+            int operand2 = Integer.parseInt(elements[2]);
+            // Realizar la operación según el operador
+            switch (elements[1]) {
+                case "+":
+                    return calculator.add(operand1, operand2);
+                case "-":
+                    return calculator.subtract(operand1, operand2);
+                case "*":
+                    return calculator.multiply(operand1, operand2);
+                case "/":
+                    return calculator.divide(operand1, operand2);
+                default:
+                    throw new IllegalArgumentException("Invalid operator");
+            }
         }
     }
 
