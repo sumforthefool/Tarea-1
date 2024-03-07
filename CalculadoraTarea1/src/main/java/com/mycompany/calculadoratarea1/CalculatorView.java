@@ -63,7 +63,6 @@ public class CalculatorView {
         primaryStage.show(); // Mostrar la ventana
     }
 
-
     // Método para manejar los clics en los botones
     private void handleButtonClick(String input) {
         switch (input) {
@@ -79,8 +78,8 @@ public class CalculatorView {
                 break;
         }
     }
-    
-        // Método para evaluar la expresión y mostrar el resultado
+
+    // Método para evaluar la expresión y mostrar el resultado
     private void evaluate() {
         try {
             // Evaluar la expresión y convertir el resultado a un string
@@ -93,13 +92,29 @@ public class CalculatorView {
             currentInput = ""; // Restablecer la entrada actual
         }
     }
-    
+
     // Método para borrar la entrada actual
     private void clear() {
         currentInput = ""; // Restablecer la entrada actual
         display.setText(""); // Borrar el contenido del campo de texto
     }
-    
+
+    // Método para borrar la entrada actual
+    private void clear() {
+        currentInput = ""; // Restablecer la entrada actual
+        display.setText(""); // Borrar el contenido del campo de texto
+    }
+
+    // Método para evaluar una expresión matemática
+    private double eval(String expression) {
+        return new Object() {
+            int pos = -1, ch;
+
+            // Método para avanzar al siguiente carácter de la expresión
+            void nextChar() {
+                ch = (++pos < expression.length()) ? expression.charAt(pos) : -1;
+            }
+        }
+    }
 
 }
-
