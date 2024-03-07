@@ -49,7 +49,20 @@ public class App  {
         panel.add(divideButton);
         panel.add(equalsButton);
         panel.add(clearButton);
-
+        
+          // Agregar un ActionListener a cada botón
+        addButton.addActionListener(new ButtonClickListener());
+        subtractButton.addActionListener(new ButtonClickListener());
+        multiplyButton.addActionListener(new ButtonClickListener());
+        divideButton.addActionListener(new ButtonClickListener());
+        equalsButton.addActionListener(new ButtonClickListener());
+        clearButton.addActionListener(new ButtonClickListener());
+        
+         // Configuración de la ventana principal
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(panel);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
 
      }
 
