@@ -40,7 +40,18 @@ public class CalculatorView {
             "1", "2", "3", "-",
             "0", ".", "=", "+"
         };
-        
-        
+
+        // Agregar botones al layout
+        for (int i = 0; i < buttonLabels.length; i++) {
+            Button button = new Button(buttonLabels[i]);
+            button.setPrefWidth(50); // Establecer el ancho del botón
+            button.setPrefHeight(50); // Establecer la altura del botón
+
+            // Manejar el evento del clic del botón
+            button.setOnAction(event -> handleButtonClick(buttonLabels[i]));
+
+            // Agregar el botón al layout en la posición correspondiente
+            gridPane.add(button, i % 4, i / 4);
+        }
     }
 }
